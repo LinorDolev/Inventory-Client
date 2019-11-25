@@ -1,0 +1,44 @@
+<form (submit)="onAddItem(name.value, amount.value, code.value)">
+  <table>
+    <th></th>
+    <th></th>
+    <tr>
+      <td><label> Name: </label></td>
+      <td><input type="text" #name></td>
+  </tr>
+  <tr>
+    <td><label> Amount:</label></td>
+    <td><input type="text" #amount></td>
+  </tr>
+  <tr>
+    <td><label> Inventory Code:    </label></td>
+    <td><input type="text" #code></td>
+  </tr>
+  <tr>
+    <button type="submit">Add Item</button>
+  </tr>
+  </table>
+  <table>
+    <tr>
+    <th>Item No.</th>
+    <th>Name</th>
+    <th>Amount</th>
+    <th>Inventory Code</th>
+    <th>Withdraw/Deposit Amount</th>
+    <th>Withdraw</th>
+    <th>Deposit</th>
+    <th>Delete</th>
+    </tr>
+    <tr *ngFor="let item of items">
+      <td>{{item.itemNo}}</td>
+      <td>{{item.name}}</td>
+      <td>{{item.amount}}</td>
+      <td>{{item.inventoryCode}}</td>
+      <td><input type="number" #changeAmount></td>
+      <td><button type="button" (click)='onWithdrawItem(item, changeAmount.value)'>Withdraw</button></td>
+      <td><button type="button" (click)='onDepositItem(item, changeAmount.value)'>Deposit</button></td>
+      <td><button type="button" (click)='onDeleteItem(item.itemNo)' >Delete</button></td>
+    </tr>
+  </table>
+</form>
+
