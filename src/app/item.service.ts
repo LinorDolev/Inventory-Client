@@ -57,7 +57,7 @@ export class ItemService {
       // server-side error
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
-    window.alert(errorMessage);
+    window.alert('ERROR:\nCannot withdraw more than amount in stock, nor negative amount.');
     return throwError(errorMessage.toString());
   }
 }

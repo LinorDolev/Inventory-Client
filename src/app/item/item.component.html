@@ -1,25 +1,36 @@
-<form (submit)="onAddItem(name.value, amount.value, code.value)">
-  <table>
-    <th></th>
-    <th></th>
-    <tr>
-      <td><label> Name: </label></td>
-      <td><input type="text" #name></td>
-  </tr>
+<form (submit)= "onAddItem(name.value, amount.value, inventoryCode.value)">
+
+  <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Name:</span>
+    </div>
+    <input class="form-control" placeholder="Name" name="name" type="text" #name>
+  </div>
+<br/>
+  <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Amount:</span>
+    </div>
+    <input class="form-control" placeholder="Amount" name="amount" type="number" #amount>
+  </div>
+<br/>
+  <div class="input-group input-group-lg">
+    <div class="input-group-prepend">
+      <span class="input-group-text" id="inputGroup-sizing-lg">Inventory Code:</span>
+    </div>
+    <input class="form-control" placeholder="Inventory Code" name="inventoryCode" type="text" #inventoryCode>
+  </div>
+<br/>
+  <div class="input-group-lg">
+    <div class="input-group-prepend">
+      <button class="btn btn-outline-secondary" type="submit">Add Item</button>
+    </div>
+  </div>
+<br/>
+
+<table class="table">
+  <thead class="thead-dark">
   <tr>
-    <td><label> Amount:</label></td>
-    <td><input type="text" #amount></td>
-  </tr>
-  <tr>
-    <td><label> Inventory Code:    </label></td>
-    <td><input type="text" #code></td>
-  </tr>
-  <tr>
-    <button type="submit">Add Item</button>
-  </tr>
-  </table>
-  <table>
-    <tr>
     <th>Item No.</th>
     <th>Name</th>
     <th>Amount</th>
@@ -28,17 +39,20 @@
     <th>Withdraw</th>
     <th>Deposit</th>
     <th>Delete</th>
-    </tr>
+  </tr>
+  </thead>
+  <tbody>
     <tr *ngFor="let item of items">
       <td>{{item.itemNo}}</td>
       <td>{{item.name}}</td>
       <td>{{item.amount}}</td>
       <td>{{item.inventoryCode}}</td>
-      <td><input type="number" #changeAmount></td>
-      <td><button type="button" (click)='onWithdrawItem(item, changeAmount.value)'>Withdraw</button></td>
-      <td><button type="button" (click)='onDepositItem(item, changeAmount.value)'>Deposit</button></td>
-      <td><button type="button" (click)='onDeleteItem(item.itemNo)' >Delete</button></td>
+      <td><input type="number"  #changeAmount></td>
+      <td><button type="button" class="btn btn-primary" (click)='onWithdrawItem(item, changeAmount.value)'>Withdraw</button></td>
+      <td><button type="button" class="btn btn-primary" (click)='onDepositItem(item, changeAmount.value)'>Deposit</button></td>
+      <td><button type="button" class="btn btn-primary" (click)='onDeleteItem(item.itemNo)' >Delete</button></td>
     </tr>
+  </tbody>
   </table>
 </form>
 

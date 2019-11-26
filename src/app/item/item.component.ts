@@ -6,16 +6,17 @@ import {ItemService} from '../item.service';
   selector: 'app-item',
   templateUrl: './item.component.html',
   styleUrls: ['./item.component.css']
+
 })
 
 export class ItemComponent implements OnInit {
 
-  constructor(private itemService: ItemService) { }
   items: Item[];
+
+  constructor(private itemService: ItemService) { }
 
   ngOnInit() {
     this.renderItems();
-
   }
 
   renderItems() {
